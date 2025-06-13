@@ -21,4 +21,13 @@ export interface LinkProps {
   url: string;
 }
 
+export interface ItemArr {
+  title: string;
+  description: string;
+  url: string;
+}
 
+export interface ItemHeaderProps{
+  title:string;
+  url:string;
+}

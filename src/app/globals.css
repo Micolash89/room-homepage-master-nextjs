@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+@theme {
+  --color-mode: class;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -23,4 +34,18 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+   @apply min-h-screen w-full   transition-colors duration-200;
+}
+
+@theme{
+  --color-grey-primary: "#A1A1A1";
+  --color-grey-secondary: "#454545";
+}
+
+.light {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
 }
