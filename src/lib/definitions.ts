@@ -13,7 +13,6 @@ export interface ItemSectionProps {
   title: string;
   description: string;
   url: string;
-  index: number;
 }
 
 export interface LinkProps {
@@ -24,7 +23,8 @@ export interface LinkProps {
 export interface ItemArr {
   title: string;
   description: string;
-  url: string;
+  urlDesktop: string;
+  urlMobile: string;
 }
 
 export interface ItemHeaderProps{
