@@ -13,56 +13,68 @@ export default function Header() {
 
   const [open, setOpen] = useState(false);
 
-
-
   return (
-    <header className="absolute top-0 left-0 w-full z-50">
-      <nav className="flex items-center px-4 py-2">
-        <div className="flex items-center justify-center mr-8">
-          <button type="button" onClick={() => 
-            setOpen(!open)}>
+    <header className="absolute top-0 left-0 sm:left-5 sm:top-10 w-full z-10">
+      <nav className="flex sm:items-center  px-4 py-2">
+        <div
+          className={`flex sm:hidden items-center justify-center mr-0 mt-12 sm:mr-8`}
+        >
+          <button
+            className="z-20 "
+            type="button"
+            onClick={() => setOpen(!open)}
+          >
             <Image
-              className={`object-contain ${open ? "hidden" : "block"} sm:hidden`}
+              className={`object-contain ${
+                open ? "hidden" : "block"
+              } sm:hidden`}
               src="/assents/images/icon-hamburger.svg"
               alt="menu"
-              width={20}
-              height={20}
-              
+              width={25}
+              height={25}
             />
-          </button>
-
-          <button type="button" onClick={() => 
-            setOpen(!open)}>
             <Image
-              className={`object-contain ${open ? "block" : "hidden"} sm:hidden`}
+              className={`mt-1 object-contain ${
+                open ? "block" : "hidden"
+              } sm:hidden`}
               src="/assents/images/icon-close.svg"
               alt="menu-close"
               width={20}
               height={20}
-              
             />
           </button>
-
-        <a className="flex items-center justify-center mr-8" href="#">
+        </div>
+        <a
+          className="flex relative sm:static top-7 left-1/3 sm:mr-12 items-center justify-center "
+          href="#"
+        >
           <Image
             className="object-contain"
             src="/assents/images/logo.svg"
             alt="logo"
-            width={50}
-            height={50}
+            width={75}
+            height={75}
           />
         </a>
-            </div>
-        
-        <ul className={`flex gap-11 items-center `}>
+
+        <ul className={` gap-11 sm:items-center items-start hidden sm:flex`}>
           {itemsArr.map((item: ItemHeaderProps, index) => (
             <LinkHeader key={item.title + index + "header"} {...item} />
           ))}
+        </ul>
 
+        <ul
+          className={` absolute top-0 left-0 w-full ${
+            open ? "h-36" : "h-0"
+          } bg-white gap-11 justify-around align-middle ${
+            open ? "flex" : "hidden"
+          }  sm:hidden `}
+        >
           {itemsArr.map((item: ItemHeaderProps, index) => (
             <LinkHeaderMobile
               key={item.title + index + "headerMobile"}
-              {...item} open={open} index={index}
+              {...item}
+              index={index}
             />
           ))}
         </ul>
@@ -86,12 +98,26 @@ export function LinkHeader({ title, url }: ItemHeaderProps) {
   );
 }
 
-export function LinkHeaderMobile({ title, url, open = false , index}: {title: string, url: string, open?: boolean, index: number}) {
+export function LinkHeaderMobile({
+  title,
+  url,
+
+  index,
+}: {
+  title: string;
+  url: string;
+
+  index: number;
+}) {
   return (
-    <li className={`absolute  w-full h-full top-0  left-[${index*100}px] ${open ? "block" : "hidden"} items-center justify-center  sm:hidden`}>
+    <li
+      className={` relative h-full ${
+        index == 0 ? "ml-16" : ""
+      }  flex items-center justify-center `}
+    >
       <a
         href={url}
-        className="lowercase font-bold py-2 px-1 block transition-all duration-300 ease-in-out hover:cursor-pointer relative group"
+        className="lowercase  font-bold py-2 px-1 block transition-all duration-300 ease-in-out hover:cursor-pointer relative group"
       >
         <span className="text-black">{title}</span>
         {/* Línea de subrayado animada */}
