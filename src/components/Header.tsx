@@ -14,7 +14,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="absolute top-0 left-0 sm:left-5 sm:top-10 w-full z-10">
+    <header className="absolute top-0 left-0  sm:ml-6 sm:top-10 w-full sm:w-fit z-10">
       <nav className="flex sm:items-center  px-4 py-2">
         <div
           className={`flex sm:hidden items-center justify-center mr-0 mt-12 sm:mr-8`}

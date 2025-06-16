@@ -6,21 +6,14 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-.dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-}
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -37,9 +30,16 @@ body {
    @apply min-h-screen w-full   transition-colors duration-200;
 }
 
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
 @theme{
-  --color-grey-primary: "#A1A1A1";
-  --color-grey-secondary: "#454545";
+  --color-gris-primary: "#A1A1A1";
+  --color-gris-secondary: "#454545";
 }
 
 .light {

@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <div className="text-xs text-center">
+    <div className="relative bottom-5 sm:right-1/3 text-xs text-center text-black sm:text-white ">
       <span>Challenge by </span>
       <Link
         name="Frontend Mentor"
