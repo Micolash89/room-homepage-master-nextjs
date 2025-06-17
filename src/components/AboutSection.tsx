@@ -8,7 +8,7 @@ export default function AboutSection() {
         <h3 className="font-bold text-lg mb-4 tracking-[0.6rem] uppercase">
           About our furniture
         </h3>
-        <p className="text-balance leading-6">
+        <p className="text-balance leading-6 text-gris-primary">
           Our multifunctional collection blends design and function to suit your
           individual taste. Make each room unique, or pick a cohesive theme that
           best express your interests and what inspires you. Find the furniture

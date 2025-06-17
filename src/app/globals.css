@@ -38,8 +38,8 @@ body {
 }
 
 @theme{
-  --color-gris-primary: "#A1A1A1";
-  --color-gris-secondary: "#454545";
+  --color-gris-primary: hsl(0, 0%, 63%);
+  --color-gris-secondary: hsl(0, 0%, 27%);
 }
 
 .light {

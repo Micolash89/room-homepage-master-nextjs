@@ -1,14 +1,3 @@
-// export interface ItemSectionProps {
-//   name: string;
-//   description: string;
-//   url: string;
-//   isActive: boolean;
-//   onToggle?: (name: string, isActive: boolean) => void;
-//   onRemove?: (name: string) => void;
-//   mensajeEliminar?: string;
-//   index: number;
-// }
-
 export interface ItemSectionProps {
   title: string;
   description: string;
@@ -27,7 +16,24 @@ export interface ItemArr {
   urlMobile: string;
 }
 
-export interface ItemHeaderProps{
-  title:string;
-  url:string;
+export interface ItemHeaderProps {
+  title: string;
+  url: string;
+}
+
+export interface Product {
+  id: number;
+  name: string;
+  price: number;
+  category: string;
+  image: string;
+  description: string;
+  inStock: boolean;
+}
+
+export interface TeamMember {
+  name: string;
+  role: string;
+  image: string;
+  bio: string;
 }
