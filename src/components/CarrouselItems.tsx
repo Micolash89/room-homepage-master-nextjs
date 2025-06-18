@@ -49,7 +49,7 @@ export default function CarrouselItems() {
 
   return (
     <div 
-      className="relative w-full overflow-hidden"
+      className="relative w-full overflow-hidden min-h-[400px] sm:min-h-[500px] lg:min-h-[600px]"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
