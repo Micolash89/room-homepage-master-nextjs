@@ -11,7 +11,7 @@ const products: Product[] = [
     category: "Chairs",
     image: "https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg",
     description: "Comfortable modern lounge chair with premium upholstery",
-    inStock: true
+    inStock: true,
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ const products: Product[] = [
     category: "Tables",
     image: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg",
     description: "Sleek dining table perfect for modern homes",
-    inStock: true
+    inStock: true,
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ const products: Product[] = [
     category: "Sofas",
     image: "https://images.pexels.com/photos/1571453/pexels-photo-1571453.jpeg",
     description: "Premium 3-seater sofa with exceptional comfort",
-    inStock: false
+    inStock: false,
   },
   {
     id: 4,
@@ -38,7 +38,7 @@ const products: Product[] = [
     category: "Tables",
     image: "https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg",
     description: "Handcrafted oak coffee table with natural finish",
-    inStock: true
+    inStock: true,
   },
   {
     id: 5,
@@ -47,7 +47,7 @@ const products: Product[] = [
     category: "Storage",
     image: "https://images.pexels.com/photos/1571471/pexels-photo-1571471.jpeg",
     description: "Modern bookshelf with clean lines and ample storage",
-    inStock: true
+    inStock: true,
   },
   {
     id: 6,
@@ -56,8 +56,8 @@ const products: Product[] = [
     category: "Chairs",
     image: "https://images.pexels.com/photos/1571472/pexels-photo-1571472.jpeg",
     description: "Professional office chair with lumbar support",
-    inStock: true
-  }
+    inStock: true,
+  },
 ];
 
 const categories = ["All", "Chairs", "Tables", "Sofas", "Storage"];
@@ -66,8 +66,9 @@ export default function Shop() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [sortBy, setSortBy] = useState("name");
 
-  const filteredProducts = products.filter(product => 
-    selectedCategory === "All" || product.category === selectedCategory
+  const filteredProducts = products.filter(
+    (product) =>
+      selectedCategory === "All" || product.category === selectedCategory
   );
 
   const sortedProducts = [...filteredProducts].sort((a, b) => {
@@ -78,7 +79,6 @@ export default function Shop() {
 
   return (
     <div className="min-h-screen bg-white">
-      
       <section className="relative h-96 bg-gray-900 flex items-center justify-center">
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative z-10 text-center text-white">
@@ -92,7 +92,7 @@ export default function Shop() {
       <section className="py-8 px-6 border-b">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="flex flex-wrap gap-2">
-            {categories.map(category => (
+            {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
@@ -106,7 +106,7 @@ export default function Shop() {
               </button>
             ))}
           </div>
-          
+
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
@@ -118,23 +118,22 @@ export default function Shop() {
         </div>
       </section>
 
-      {/* Products Grid */}
       <section className="py-16 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {sortedProducts.map(product => (
+            {sortedProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Newsletter Section */}
       <section className="bg-gray-50 py-16 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4 text-black">Stay Updated</h2>
           <p className="text-gray-600 mb-8">
-            Subscribe to our newsletter for the latest furniture trends and exclusive offers
+            Subscribe to our newsletter for the latest furniture trends and
+            exclusive offers
           </p>
           <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
             <input
@@ -174,15 +173,17 @@ function ProductCard({ product }: { product: Product }) {
           </span>
         </div>
       </div>
-      
+
       <div className="space-y-2">
         <h3 className="font-bold text-xl text-black group-hover:text-gray-600 transition-colors duration-300">
           {product.name}
         </h3>
         <p className="text-gris-primary text-sm">{product.description}</p>
         <div className="flex justify-between items-center">
-          <span className="text-2xl font-bold text-black">${product.price}</span>
-          <button 
+          <span className="text-2xl font-bold text-black">
+            ${product.price}
+          </span>
+          <button
             disabled={!product.inStock}
             className={`px-4 py-2 rounded-lg transition-colors duration-300 cursor-pointer ${
               product.inStock
