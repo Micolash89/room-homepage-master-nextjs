@@ -38,3 +38,8 @@ export interface TeamMember {
   image: string;
   bio: string;
 }
+
+export interface ItemSectionProps extends ItemArr {
+  onNext?: () => void;
+  onPrev?: () => void;
+}

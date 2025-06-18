@@ -1,11 +1,7 @@
-import { ItemArr } from "@/lib/definitions";
+import {  ItemSectionProps } from "@/lib/definitions";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-interface ItemSectionProps extends ItemArr {
-  onNext?: () => void;
-  onPrev?: () => void;
-}
 
 const textVariants = {
   hidden: {
