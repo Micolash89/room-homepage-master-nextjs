@@ -5,6 +5,9 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Room - Acerca de Nosotros | Muebles de Diseño Premium',
   description: 'Conoce la historia de Room. Más de 30 años creando muebles excepcionales con artesanía de calidad y diseño atemporal.',
+  icons: {
+    icon: '/assents/images/shopping-bag-fill.png',
+  }
 };
 
 const teamMembers: TeamMember[] = [

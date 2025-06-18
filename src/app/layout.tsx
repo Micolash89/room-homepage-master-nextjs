@@ -18,6 +18,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'Room - Muebles de Diseño Premium',
   description: 'Descubre nuestra colección de muebles de diseño premium. Creamos espacios únicos con muebles funcionales y elegantes para tu hogar.',
+  icons: {
+    icon: '/assents/images/shopping-bag-fill.png',
+  }
 };
 export default function RootLayout({
   children,
