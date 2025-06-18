@@ -53,9 +53,9 @@ export default function Header() {
               />
             </button>
           </div>
-          <a
+          <Link
             className="flex relative sm:static top-7 left-1/3 sm:mr-12 items-center justify-center"
-            href="#"
+            href="/"
           >
             <Image
               className="object-contain"
@@ -64,7 +64,7 @@ export default function Header() {
               width={75}
               height={75}
             />
-          </a>
+          </Link>
 
           <ul className={`gap-11 sm:items-center items-start hidden sm:flex`}>
             {itemsArr.map((item: ItemHeaderProps, index) => (
