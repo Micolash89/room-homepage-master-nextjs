@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import Header from "@/components/Header";
 import { Product } from "@/lib/definitions";
 
 const products: Product[] = [
@@ -79,9 +78,7 @@ export default function Shop() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header />
       
-      {/* Hero Section */}
       <section className="relative h-96 bg-gray-900 flex items-center justify-center">
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative z-10 text-center text-white">
@@ -92,7 +89,6 @@ export default function Shop() {
         </div>
       </section>
 
-      {/* Filters and Sort */}
       <section className="py-8 px-6 border-b">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="flex flex-wrap gap-2">
@@ -100,7 +96,7 @@ export default function Shop() {
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-full transition-colors duration-300 ${
+                className={`px-4 py-2 rounded-full cursor-pointer transition-colors duration-300 ${
                   selectedCategory === category
                     ? "bg-black text-white"
                     : "bg-gray-100 text-black hover:bg-gray-200"
@@ -136,7 +132,7 @@ export default function Shop() {
       {/* Newsletter Section */}
       <section className="bg-gray-50 py-16 px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
+          <h2 className="text-3xl font-bold mb-4 text-black">Stay Updated</h2>
           <p className="text-gray-600 mb-8">
             Subscribe to our newsletter for the latest furniture trends and exclusive offers
           </p>
@@ -146,7 +142,7 @@ export default function Shop() {
               placeholder="Enter your email"
               className="flex-1 px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
             />
-            <button className="px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-300">
+            <button className="px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-300 cursor-pointer">
               Subscribe
             </button>
           </div>
@@ -173,25 +169,25 @@ function ProductCard({ product }: { product: Product }) {
           </div>
         )}
         <div className="absolute top-4 right-4">
-          <span className="bg-white px-2 py-1 rounded-full text-sm font-medium">
+          <span className="bg-white px-2 py-1 rounded-full text-sm font-medium text-gris-secondary">
             {product.category}
           </span>
         </div>
       </div>
       
       <div className="space-y-2">
-        <h3 className="font-bold text-xl group-hover:text-gray-600 transition-colors duration-300">
+        <h3 className="font-bold text-xl text-black group-hover:text-gray-600 transition-colors duration-300">
           {product.name}
         </h3>
-        <p className="text-gray-600 text-sm">{product.description}</p>
+        <p className="text-gris-primary text-sm">{product.description}</p>
         <div className="flex justify-between items-center">
-          <span className="text-2xl font-bold">${product.price}</span>
+          <span className="text-2xl font-bold text-black">${product.price}</span>
           <button 
             disabled={!product.inStock}
-            className={`px-4 py-2 rounded-lg transition-colors duration-300 ${
+            className={`px-4 py-2 rounded-lg transition-colors duration-300 cursor-pointer ${
               product.inStock
                 ? "bg-black text-white hover:bg-gray-800"
-                : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                : "bg-gray-300 text-white cursor-not-allowed"
             }`}
           >
             {product.inStock ? "Add to Cart" : "Out of Stock"}

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Header from "@/components/Header";
 import { TeamMember } from "@/lib/definitions";
 
 const teamMembers: TeamMember[] = [
@@ -26,9 +25,6 @@ const teamMembers: TeamMember[] = [
 export default function About() {
   return (
     <div className="min-h-screen bg-white">
-      <Header />
-      
-      {/* Hero Section */}
       <section className="relative h-96 bg-gray-900 flex items-center justify-center">
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative z-10 text-center text-white">
@@ -39,13 +35,13 @@ export default function About() {
         </div>
       </section>
 
-      {/* Story Section */}
+      
       <section className="py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold mb-6">Our Story</h2>
-              <div className="space-y-4 text-gray-600 leading-relaxed">
+              <h2 className="text-4xl font-bold mb-6 text-black">Our Story</h2>
+              <div className="space-y-4 text-gris-primary leading-relaxed">
                 <p>
                   Founded in 1990, our furniture company began as a small workshop with a simple mission: 
                   to create beautiful, functional furniture that enhances people{"'"}s lives. What started as 
@@ -76,10 +72,10 @@ export default function About() {
         </div>
       </section>
 
-      {/* Values Section */}
+      
       <section className="bg-gray-50 py-16 px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12">Our Values</h2>
+          <h2 className="text-4xl font-bold text-center mb-12 text-black">Our Values</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <ValueCard
               title="Quality Craftsmanship"
@@ -100,7 +96,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Team Section */}
+      
       <section className="py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-12">Meet Our Team</h2>
@@ -112,7 +108,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Stats Section */}
+      
       <section className="bg-black text-white py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -132,7 +128,7 @@ function ValueCard({ title, description, icon }: { title: string; description: s
     <div className="text-center p-6">
       <div className="text-4xl mb-4">{icon}</div>
       <h3 className="text-xl font-bold mb-4">{title}</h3>
-      <p className="text-gray-600 leading-relaxed">{description}</p>
+      <p className="text-gris-primary leading-relaxed">{description}</p>
     </div>
   );
 }
@@ -149,9 +145,9 @@ function TeamCard({ member }: { member: TeamMember }) {
           className="w-full h-80 object-cover rounded-lg"
         />
       </div>
-      <h3 className="text-xl font-bold mb-2">{member.name}</h3>
-      <p className="text-gray-600 font-medium mb-3">{member.role}</p>
-      <p className="text-gray-600 text-sm leading-relaxed">{member.bio}</p>
+      <h3 className="text-xl font-bold mb-2 text-black">{member.name}</h3>
+      <p className="text-gris-primary font-medium mb-3">{member.role}</p>
+      <p className="text-gris-primary text-sm leading-relaxed">{member.bio}</p>
     </div>
   );
 }
@@ -160,7 +156,7 @@ function StatCard({ number, label }: { number: string; label: string }) {
   return (
     <div>
       <div className="text-4xl font-bold mb-2">{number}</div>
-      <div className="text-gray-300">{label}</div>
+      <div className="text-gris-primary">{label}</div>
     </div>
   );
 }

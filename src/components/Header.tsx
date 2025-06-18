@@ -1,14 +1,15 @@
 "use client";
 import { ItemHeaderProps } from "@/lib/definitions";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function Header() {
   const itemsArr: ItemHeaderProps[] = [
-    { title: "Home", url: "#" },
-    { title: "Shop", url: "#" },
-    { title: "About", url: "#" },
-    { title: "Contact", url: "#" },
+    { title: "Home", url: "/" },
+    { title: "Shop", url: "/shop" },
+    { title: "About", url: "/about" },
+    { title: "Contact", url: "/contact" },
   ];
 
   const [open, setOpen] = useState(false);
@@ -97,14 +98,14 @@ export default function Header() {
 export function LinkHeader({ title, url }: ItemHeaderProps) {
   return (
     <li className="relative hidden sm:block">
-      <a
+      <Link
         href={url}
         className="lowercase font-bold py-2 px-1 block transition-all duration-300 ease-in-out hover:cursor-pointer relative group"
       >
         <span className="text-white">{title}</span>
         {/* Línea de subrayado animada */}
         <span className="absolute bottom-0 left-2 right-2 h-0.5 bg-current transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
-      </a>
+      </Link>
     </li>
   );
 }
