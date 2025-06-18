@@ -3,13 +3,14 @@ import { ItemHeaderProps } from "@/lib/definitions";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Header() {
   const itemsArr: ItemHeaderProps[] = [
-    { title: "Home", url: "/" },
-    { title: "Shop", url: "/shop" },
-    { title: "About", url: "/about" },
-    { title: "Contact", url: "/contact" },
+    { title: "Home", url: "/", index: 0 },
+    { title: "Shop", url: "/shop", index: 1 },
+    { title: "About", url: "/about", index: 2 },
+    { title: "Contact", url: "/contact", index: 3 },
   ];
 
   const [open, setOpen] = useState(false);
@@ -68,7 +69,11 @@ export default function Header() {
 
           <ul className={`gap-11 sm:items-center items-start hidden sm:flex`}>
             {itemsArr.map((item: ItemHeaderProps, index) => (
-              <LinkHeader key={item.title + index + "header"} {...item} />
+              <LinkHeader
+                key={item.title + index + "header"}
+                {...item}
+                index={index}
+              />
             ))}
           </ul>
 
@@ -94,14 +99,33 @@ export default function Header() {
   );
 }
 
-export function LinkHeader({ title, url }: ItemHeaderProps) {
+export function LinkHeader({ title, url, index }: ItemHeaderProps) {
+  const variants = {
+    hidden: { opacity: 0, y: 100 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.2,
+        delay: index * 0.1,
+        ease: "easeOut" as const,
+      },
+    },
+  };
   return (
     <li className="relative hidden sm:block">
       <Link
         href={url}
         className="lowercase font-bold py-2 px-1 block transition-all duration-300 ease-in-out hover:cursor-pointer relative group"
       >
-        <span className="text-white">{title}</span>
+        <motion.span
+          className="text-white"
+          variants={variants}
+          initial="hidden"
+          animate="visible"
+        >
+          {title}
+        </motion.span>
         <span className="absolute bottom-0 left-2 right-2 h-0.5 bg-current transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
       </Link>
     </li>
@@ -120,19 +144,26 @@ export function LinkHeaderMobile({
   onClick?: () => void;
 }) {
   return (
-    <li
+    <motion.li
       className={`relative h-full ${
         index == 0 ? "ml-16" : ""
       } flex items-center justify-center`}
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.2,
+        delay: index * 0.2,
+        ease: "easeOut" as const,
+      }}
     >
-      <a
+      <Link
         href={url}
         onClick={onClick}
         className="lowercase font-bold py-2 px-1 block transition-all duration-300 ease-in-out hover:cursor-pointer relative group"
       >
         <span className="text-black">{title}</span>
         <span className="absolute bottom-0 left-2 right-2 h-0.5 bg-current transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
-      </a>
-    </li>
+      </Link>
+    </motion.li>
   );
 }

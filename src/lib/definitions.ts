@@ -19,6 +19,7 @@ export interface ItemArr {
 export interface ItemHeaderProps {
   title: string;
   url: string;
+  index:number
 }
 
 export interface Product {

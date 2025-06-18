@@ -1,10 +1,38 @@
 import { ItemArr } from "@/lib/definitions";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 interface ItemSectionProps extends ItemArr {
   onNext?: () => void;
   onPrev?: () => void;
 }
+
+const textVariants = {
+  hidden: {
+    opacity: 0,
+    x: 100, 
+  },
+  visible: {
+    opacity: 1,
+    x: 0, 
+    transition: {
+      duration: 0.6,
+      ease: "easeOut" as const,
+    },
+  },
+};
+
+const containerVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2, 
+    },
+  },
+};
 
 export default function ItemSection({
   title,
@@ -50,14 +78,31 @@ export default function ItemSection({
           </div>
         </div>
 
-        <div className="flex flex-col gap-5 items-center px-6 py-14 sm:px-14 sm:py-20 sm:w-1/2 lg:w-2/5 sm:justify-center">
-          <h2 className="font-bold text-4xl sm:max-w-lg text-balance">
+        <motion.div 
+          className="flex flex-col gap-5 items-center px-6 py-14 sm:px-14 sm:py-20 sm:w-1/2 lg:w-2/5 sm:justify-center"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.h2 
+            className="font-bold text-4xl sm:max-w-lg text-balance"
+            variants={textVariants}
+          >
             {title}
-          </h2>
-          <p className="text-balance text-gris-primary font-bold max-w-3xl">
+          </motion.h2>
+          
+          <motion.p 
+            className="text-balance text-gris-primary font-bold max-w-3xl"
+            variants={textVariants}
+          >
             {description}
-          </p>
-          <a href="#" className="flex gap-2 text self-start">
+          </motion.p>
+          
+          <motion.a 
+            href="#" 
+            className="flex gap-2 text self-start"
+            variants={textVariants}
+          >
             <span className="tracking-[0.6rem] uppercase hover:text-gris-primary transition-colors duration-300 font-bold">
               Shop now
             </span>
@@ -67,8 +112,8 @@ export default function ItemSection({
               width={50}
               height={50}
             />
-          </a>
-        </div>
+          </motion.a>
+        </motion.div>
       </section>
     </>
   );
@@ -84,11 +129,13 @@ export function ButtonItemArrow({
   onClick?: () => void;
 }) {
   return (
-    <button
+    <motion.button
       className="p-7 hover:bg-gris-secondary cursor-pointer transition-colors duration-200"
       onClick={onClick}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
     >
       <Image src={url} alt={name} width={12} height={10} />
-    </button>
+    </motion.button>
   );
 }
