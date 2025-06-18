@@ -1,7 +1,8 @@
 "use client";
-import { ItemArr } from "@/lib/definitions";
+
 import React, { useState, useEffect } from "react";
 import ItemSection from "./ItemSection";
+import { ItemArr } from "@/lib/definitions";
 
 export default function CarrouselItems() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -65,7 +66,8 @@ export default function CarrouselItems() {
       >
         {itemsArr.map((item: ItemArr, index) => (
           <div key={`${item.title}-${index}`} className="w-full flex-shrink-0">
-            <ItemSection {...item} onNext={nextSlide} onPrev={prevSlide} />
+            {/* <ItemSection {...item} onNext={nextSlide} onPrev={prevSlide} /> */}
+            <ItemSection  description={item.description} title={item.title} urlDesktop={item.urlDesktop} urlMobile={item.urlMobile} onNext={nextSlide} onPrev={prevSlide} />
           </div>
         ))}
       </div>

@@ -1,8 +1,4 @@
-export interface ItemSectionProps {
-  title: string;
-  description: string;
-  url: string;
-}
+
 
 export interface LinkProps {
   name: string;

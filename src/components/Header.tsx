@@ -107,13 +107,31 @@ export function LinkHeader({ title, url, index }: ItemHeaderProps) {
       y: 0,
       transition: {
         duration: 0.2,
-        delay: index * 0.1,
+        delay: index * 0.2,
         ease: "easeOut" as const,
       },
     },
   };
+
+  const containerVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.4,
+      },
+    },
+  };
+
   return (
-    <li className="relative hidden sm:block">
+    <motion.li
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className="relative hidden sm:block"
+    >
       <Link
         href={url}
         className="lowercase font-bold py-2 px-1 block transition-all duration-300 ease-in-out hover:cursor-pointer relative group"
@@ -128,7 +146,7 @@ export function LinkHeader({ title, url, index }: ItemHeaderProps) {
         </motion.span>
         <span className="absolute bottom-0 left-2 right-2 h-0.5 bg-current transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
       </Link>
-    </li>
+    </motion.li>
   );
 }
 
@@ -152,7 +170,7 @@ export function LinkHeaderMobile({
       animate={{ opacity: 1, y: 0 }}
       transition={{
         duration: 0.2,
-        delay: index * 0.2,
+        delay: 0.4,
         ease: "easeOut" as const,
       }}
     >
