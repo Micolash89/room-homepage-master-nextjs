@@ -51,12 +51,16 @@ export default function ItemSection({
         </div>
 
         <div className="flex flex-col gap-5 items-center px-6 py-14 sm:px-14 sm:py-20 sm:w-1/2 lg:w-2/5 sm:justify-center">
-          <h2 className="font-bold text-4xl sm:max-w-lg text-balance">{title}</h2>
+          <h2 className="font-bold text-4xl sm:max-w-lg text-balance">
+            {title}
+          </h2>
           <p className="text-balance text-gris-primary font-bold max-w-3xl">
             {description}
           </p>
           <a href="#" className="flex gap-2 text self-start">
-            <span className="tracking-[0.6rem] uppercase hover:text-gris-primary transition-colors duration-300 font-bold">Shop now</span>
+            <span className="tracking-[0.6rem] uppercase hover:text-gris-primary transition-colors duration-300 font-bold">
+              Shop now
+            </span>
             <Image
               src="/assents/images/icon-arrow.svg"
               alt="arrow-link"
@@ -70,17 +74,20 @@ export default function ItemSection({
   );
 }
 
-export function ButtonItemArrow({ 
-  url, 
-  name, 
-  onClick 
-}: { 
-  url: string; 
-  name: string; 
+export function ButtonItemArrow({
+  url,
+  name,
+  onClick,
+}: {
+  url: string;
+  name: string;
   onClick?: () => void;
 }) {
   return (
-    <button className="p-7 hover:bg-gris-secondary cursor-pointer transition-colors duration-200" onClick={onClick}>
+    <button
+      className="p-7 hover:bg-gris-secondary cursor-pointer transition-colors duration-200"
+      onClick={onClick}
+    >
       <Image src={url} alt={name} width={12} height={10} />
     </button>
   );

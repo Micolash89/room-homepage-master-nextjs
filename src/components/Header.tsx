@@ -16,14 +16,13 @@ export default function Header() {
 
   return (
     <>
-      {/* Overlay de fondo */}
       {open && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/30 bg-opacity-50 z-5 sm:hidden"
           onClick={() => setOpen(false)}
         />
       )}
-      
+
       <header className="absolute top-0 left-0 sm:ml-6 sm:top-10 w-full sm:w-fit z-10">
         <nav className="flex sm:items-center px-4 py-2">
           <div
@@ -103,7 +102,6 @@ export function LinkHeader({ title, url }: ItemHeaderProps) {
         className="lowercase font-bold py-2 px-1 block transition-all duration-300 ease-in-out hover:cursor-pointer relative group"
       >
         <span className="text-white">{title}</span>
-        {/* Línea de subrayado animada */}
         <span className="absolute bottom-0 left-2 right-2 h-0.5 bg-current transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
       </Link>
     </li>
@@ -133,7 +131,6 @@ export function LinkHeaderMobile({
         className="lowercase font-bold py-2 px-1 block transition-all duration-300 ease-in-out hover:cursor-pointer relative group"
       >
         <span className="text-black">{title}</span>
-        {/* Línea de subrayado animada */}
         <span className="absolute bottom-0 left-2 right-2 h-0.5 bg-current transform scale-x-0 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
       </a>
     </li>
