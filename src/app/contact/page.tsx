@@ -1,8 +1,6 @@
 "use client";
 import { useState } from "react";
 
- 
-
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
@@ -31,8 +29,6 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-white">
-      
-
       <section className="relative h-96 bg-gray-900 flex items-center justify-center">
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative z-10 text-center text-white">

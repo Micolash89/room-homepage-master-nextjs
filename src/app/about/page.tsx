@@ -1,150 +1,83 @@
+"use client";
 import Image from "next/image";
 import { TeamMember } from "@/lib/definitions";
-import type { Metadata } from 'next';
+import AboutStory from "@/components/about/AboutStory";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
-export const metadata: Metadata = {
-  title: 'Room - Acerca de Nosotros | Muebles de Diseño Premium',
-  description: 'Conoce la historia de Room. Más de 30 años creando muebles excepcionales con artesanía de calidad y diseño atemporal.',
-  icons: {
-    icon: '/assents/images/shopping-bag-fill.png',
-  }
-};
 
 const teamMembers: TeamMember[] = [
   {
     name: "Sarah Johnson",
     role: "Founder & Creative Director",
     image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg",
-    bio: "With over 15 years in furniture design, Sarah leads our creative vision and ensures every piece meets our high standards."
+    bio: "With over 15 years in furniture design, Sarah leads our creative vision and ensures every piece meets our high standards.",
   },
   {
     name: "Michael Chen",
     role: "Head of Manufacturing",
     image: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg",
-    bio: "Michael oversees our production process, ensuring quality craftsmanship in every piece we create."
+    bio: "Michael oversees our production process, ensuring quality craftsmanship in every piece we create.",
   },
   {
     name: "Emma Rodriguez",
     role: "Sustainability Manager",
     image: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg",
-    bio: "Emma leads our commitment to sustainable practices and eco-friendly materials in all our furniture lines."
-  }
+    bio: "Emma leads our commitment to sustainable practices and eco-friendly materials in all our furniture lines.",
+  },
 ];
 
-export default function About() {
+// Componente para animaciones de valores
+function ValueCardAnimated({
+  title,
+  description,
+  icon,
+  index,
+}: {
+  title: string;
+  description: string;
+  icon: string;
+  index: number;
+}) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+
   return (
-    <div className="min-h-screen bg-white">
-      <section className="relative h-96 bg-gray-900 flex items-center justify-center">
-        <div className="absolute inset-0 bg-black/40"></div>
-        <div className="relative z-10 text-center text-white">
-          <h1 className="text-5xl font-bold mb-4">About Us</h1>
-          <p className="text-xl max-w-2xl mx-auto">
-            Crafting exceptional furniture for over three decades
-          </p>
-        </div>
-      </section>
-
-      
-      <section className="py-16 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl font-bold mb-6 text-black">Our Story</h2>
-              <div className="space-y-4 text-gris-primary leading-relaxed">
-                <p>
-                  Founded in 1990, our furniture company began as a small workshop with a simple mission: 
-                  to create beautiful, functional furniture that enhances people{"'"}s lives. What started as 
-                  a passion project has grown into a trusted name in premium furniture design.
-                </p>
-                <p>
-                  We believe that furniture is more than just functional objects – they{"'"}re the foundation 
-                  of memories, the backdrop to life{"'"}s most important moments. Every piece we create is 
-                  designed with this philosophy in mind, combining timeless aesthetics with modern functionality.
-                </p>
-                <p>
-                  Today, we continue to honor our founding principles while embracing innovation and 
-                  sustainability. Our commitment to quality craftsmanship and customer satisfaction 
-                  remains unwavering as we look toward the future.
-                </p>
-              </div>
-            </div>
-            <div className="relative">
-              <Image
-                src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg"
-                alt="Our workshop"
-                width={600}
-                height={400}
-                className="rounded-lg shadow-lg"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      
-      <section className="bg-gray-50 py-16 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12 text-black">Our Values</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <ValueCard
-              title="Quality Craftsmanship"
-              description="Every piece is meticulously crafted by skilled artisans using traditional techniques combined with modern precision."
-              icon="🔨"
-            />
-            <ValueCard
-              title="Sustainable Materials"
-              description="We source responsibly harvested wood and eco-friendly materials to minimize our environmental impact."
-              icon="🌱"
-            />
-            <ValueCard
-              title="Timeless Design"
-              description="Our designs transcend trends, creating pieces that remain beautiful and relevant for generations."
-              icon="✨"
-            />
-          </div>
-        </div>
-      </section>
-
-      
-      <section className="py-16 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12">Meet Our Team</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {teamMembers.map((member, index) => (
-              <TeamCard key={index} member={member} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      
-      <section className="bg-black text-white py-16 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <StatCard number="30+" label="Years of Experience" />
-            <StatCard number="10,000+" label="Happy Customers" />
-            <StatCard number="500+" label="Unique Designs" />
-            <StatCard number="50+" label="Countries Served" />
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-}
-
-function ValueCard({ title, description, icon }: { title: string; description: string; icon: string }) {
-  return (
-    <div className="text-center p-6">
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      transition={{ 
+        duration: 0.6, 
+        delay: index * 0.2,
+        ease: "easeOut" 
+      }}
+      className="text-center p-6"
+    >
       <div className="text-4xl mb-4">{icon}</div>
-      <h3 className="text-xl font-bold mb-4">{title}</h3>
-      <p className="text-gris-primary leading-relaxed">{description}</p>
-    </div>
+      <h3 className="text-xl font-bold mb-4 text-black">{title}</h3>
+      <p className="text-gris-secondary leading-relaxed">{description}</p>
+    </motion.div>
   );
 }
 
-function TeamCard({ member }: { member: TeamMember }) {
+// Componente para animaciones de equipo
+function TeamCardAnimated({ member, index }: { member: TeamMember; index: number }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+
   return (
-    <div className="text-center">
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+      transition={{ 
+        duration: 0.5, 
+        delay: index * 0.1,
+        ease: "easeOut" 
+      }}
+      className="text-center"
+    >
       <div className="relative mb-4">
         <Image
           src={member.image}
@@ -157,15 +90,170 @@ function TeamCard({ member }: { member: TeamMember }) {
       <h3 className="text-xl font-bold mb-2 text-black">{member.name}</h3>
       <p className="text-gris-primary font-medium mb-3">{member.role}</p>
       <p className="text-gris-primary text-sm leading-relaxed">{member.bio}</p>
-    </div>
+    </motion.div>
   );
 }
 
-function StatCard({ number, label }: { number: string; label: string }) {
+// Componente para estadísticas animadas
+function StatsSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+
+  const stats = [
+    { number: "30+", label: "Years of Experience" },
+    { number: "10,000+", label: "Happy Customers" },
+    { number: "500+", label: "Unique Designs" },
+    { number: "50+", label: "Countries Served" },
+  ];
+
   return (
-    <div>
-      <div className="text-4xl font-bold mb-2">{number}</div>
-      <div className="text-gris-primary">{label}</div>
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={{
+        hidden: { opacity: 0 },
+        visible: {
+          opacity: 1,
+          transition: {
+            staggerChildren: 0.1,
+          },
+        },
+      }}
+      className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
+    >
+      {stats.map((stat, index) => (
+        <motion.div
+          key={index}
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: { opacity: 1, y: 0 },
+          }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="text-4xl font-bold mb-2">{stat.number}</div>
+          <div className="text-gris-primary">{stat.label}</div>
+        </motion.div>
+      ))}
+    </motion.div>
+  );
+}
+
+export default function About() {
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Hero Section - Sin animación de scroll ya que está visible */}
+      <section className="relative h-96 bg-gray-900 flex items-center justify-center">
+        <div className="absolute inset-0 bg-black/40"></div>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative z-10 text-center text-white"
+        >
+          <h1 className="text-5xl font-bold mb-4">About Us</h1>
+          <p className="text-xl max-w-2xl mx-auto">
+            Crafting exceptional furniture for over three decades
+          </p>
+        </motion.div>
+      </section>
+
+      {/* Our Story Section */}
+      <section className="py-16 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <motion.h2
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6 }}
+                className="text-4xl font-bold mb-6 text-black"
+              >
+                Our Story
+              </motion.h2>
+              <AboutStory />
+            </div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+              className="relative"
+            >
+              <Image
+                src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg"
+                alt="Our workshop"
+                width={600}
+                height={400}
+                className="rounded-lg shadow-lg"
+              />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Values Section */}
+      <section className="bg-gray-50 py-16 px-6">
+        <div className="max-w-6xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl font-bold text-center mb-12 text-black"
+          >
+            Our Values
+          </motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <ValueCardAnimated
+              title="Quality Craftsmanship"
+              description="Every piece is meticulously crafted by skilled artisans using traditional techniques combined with modern precision."
+              icon="🔨"
+              index={0}
+            />
+            <ValueCardAnimated
+              title="Sustainable Materials"
+              description="We source responsibly harvested wood and eco-friendly materials to minimize our environmental impact."
+              icon="🌱"
+              index={1}
+            />
+            <ValueCardAnimated
+              title="Timeless Design"
+              description="Our designs transcend trends, creating pieces that remain beautiful and relevant for generations."
+              icon="✨"
+              index={2}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="py-16 px-6">
+        <div className="max-w-6xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl font-bold text-center mb-12"
+          >
+            Meet Our Team
+          </motion.h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {teamMembers.map((member, index) => (
+              <TeamCardAnimated key={index} member={member} index={index} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="bg-black text-white py-16 px-6">
+        <div className="max-w-6xl mx-auto">
+          <StatsSection />
+        </div>
+      </section>
     </div>
   );
 }
