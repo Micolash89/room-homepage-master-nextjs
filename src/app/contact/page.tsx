@@ -1,5 +1,56 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+
+const categoryButtonVariants = {
+  hidden: {
+    opacity: 0,
+    y: 20,
+  },
+  visible: (index: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: index * 0.1,
+      duration: 0.4,
+      ease: "easeOut" as const,
+    },
+  }),
+};
+
+// Variants para productos con scroll
+const productCardVariants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+    scale: 0.95,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut" as const,
+    },
+  },
+};
+
+// Variants para la sección de newsletter
+const newsletterVariants = {
+  hidden: {
+    opacity: 0,
+    y: 50,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut" as const,
+    },
+  },
+};
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -7,6 +58,23 @@ export default function Contact() {
     email: "",
     subject: "",
     message: "",
+  });
+
+  const formRef = useRef(null);
+  const mapRef = useRef(null);
+  const questionRef = useRef(null);
+  const touchRef = useRef(null);
+
+  const formInView = useInView(formRef, { once: true, amount: 0.3 });
+  const mapInView = useInView(mapRef, { once: true, amount: 0.1 });
+  const questionInView = useInView(questionRef, {
+    once: true,
+    amount: 0.3,
+  });
+
+  const touchInView = useInView(touchRef, {
+    once: true,
+    amount: 0.3,
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -31,12 +99,17 @@ export default function Contact() {
     <div className="min-h-screen bg-white">
       <section className="relative h-96 bg-gray-900 flex items-center justify-center">
         <div className="absolute inset-0 bg-black/40"></div>
-        <div className="relative z-10 text-center text-white">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative z-10 text-center text-white"
+        >
           <h1 className="text-5xl font-bold mb-4">Contact Us</h1>
           <p className="text-xl max-w-2xl mx-auto">
             Get in touch with our team for any questions or assistance
           </p>
-        </div>
+        </motion.div>
       </section>
 
       <section className="py-16 px-6">
@@ -46,9 +119,26 @@ export default function Contact() {
               <h2 className="text-3xl font-bold mb-8 text-black">
                 Send us a Message
               </h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <motion.form
+               ref={formRef}
+            initial="hidden"
+            animate={formInView ? "visible" : "hidden"}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.15,
+                },
+              },
+            }}
+              onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                  >
                     <label
                       htmlFor="name"
                       className="block text-sm font-medium text-gray-700 mb-2"
@@ -65,8 +155,12 @@ export default function Contact() {
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent placeholder:text-gray-500 text-black"
                       placeholder="Your full name"
                     />
-                  </div>
-                  <div>
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                  >
                     <label
                       htmlFor="email"
                       className="block text-sm font-medium text-gray-700 mb-2"
@@ -83,10 +177,14 @@ export default function Contact() {
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent placeholder:text-gray-500 text-black"
                       placeholder="your.email@example.com"
                     />
-                  </div>
+                  </motion.div>
                 </div>
 
-                <div>
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                >
                   <label
                     htmlFor="subject"
                     className="block text-sm font-medium text-gray-700 mb-2"
@@ -108,9 +206,13 @@ export default function Contact() {
                     <option value="custom">Custom Design</option>
                     <option value="warranty">Warranty Claim</option>
                   </select>
-                </div>
+                </motion.div>
 
-                <div>
+                <motion.div
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                >
                   <label
                     htmlFor="message"
                     className="block text-sm font-medium text-gray-700 mb-2"
@@ -128,18 +230,32 @@ export default function Contact() {
                     placeholder:text-gray-500"
                     placeholder="Tell us how we can help you..."
                   />
-                </div>
+                </motion.div>
 
-                <button
+                <motion.button
+                  variants={categoryButtonVariants}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   type="submit"
                   className="w-full bg-black text-white py-3 px-6 rounded-lg hover:bg-gris-secondary cursor-pointer transition-colors duration-300 font-medium"
                 >
                   Send Message
-                </button>
-              </form>
+                </motion.button>
+              </motion.form>
             </div>
 
-            <div>
+            <motion.div   ref={touchRef}
+            initial="hidden"
+            animate={touchInView ? "visible" : "hidden"}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.15,
+                },
+              },
+            }}>
               <h2 className="text-3xl font-bold mb-8 text-black">
                 Get in Touch
               </h2>
@@ -184,7 +300,7 @@ export default function Contact() {
                   ]}
                 />
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>

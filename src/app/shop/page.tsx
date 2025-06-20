@@ -118,12 +118,10 @@ export default function Shop() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [sortBy, setSortBy] = useState("name");
   
-  // Refs para las secciones
   const filtersRef = useRef(null);
   const productsRef = useRef(null);
   const newsletterRef = useRef(null);
   
-  // InView hooks
   const filtersInView = useInView(filtersRef, { once: true, amount: 0.3 });
   const productsInView = useInView(productsRef, { once: true, amount: 0.1 });
   const newsletterInView = useInView(newsletterRef, { once: true, amount: 0.3 });
@@ -141,7 +139,6 @@ export default function Shop() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section - Visible al cargar */}
       <section className="relative h-96 bg-gray-900 flex items-center justify-center">
         <div className="absolute inset-0 bg-black/40"></div>
         <motion.div 
@@ -157,7 +154,6 @@ export default function Shop() {
         </motion.div>
       </section>
 
-      {/* Filters Section - Anima en scroll */}
       <section className="py-8 px-6 border-b">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
           <motion.div 
