@@ -39,3 +39,8 @@ export interface ItemSectionProps extends ItemArr {
   onNext?: () => void;
   onPrev?: () => void;
 }
+
+export interface AnimatedNumberProps {
+  value: number;
+  className?: string;
+}

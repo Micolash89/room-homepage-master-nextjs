@@ -4,6 +4,7 @@ import { TeamMember } from "@/lib/definitions";
 import AboutStory from "@/components/about/AboutStory";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { AnimatedNumber } from "@/components/about/AnimatedNumber";
 
 
 const teamMembers: TeamMember[] = [
@@ -99,10 +100,10 @@ function StatsSection() {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   const stats = [
-    { number: "30+", label: "Years of Experience" },
-    { number: "10,000+", label: "Happy Customers" },
-    { number: "500+", label: "Unique Designs" },
-    { number: "50+", label: "Countries Served" },
+    { number: 30, label: "Years of Experience" },
+    { number: 10000, label: "Happy Customers" },
+    { number: 500, label: "Unique Designs" },
+    { number: 50, label: "Countries Served" },
   ];
 
   return (
@@ -130,7 +131,8 @@ function StatsSection() {
           }}
           transition={{ duration: 0.5 }}
         >
-          <div className="text-4xl font-bold mb-2">{stat.number}</div>
+          {/* <div className="text-4xl font-bold mb-2">{stat.number}</div> */}
+          <AnimatedNumber className="text-4xl font-bold mb-2" value={stat.number} />
           <div className="text-gris-primary">{stat.label}</div>
         </motion.div>
       ))}
