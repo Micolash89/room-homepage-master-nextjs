@@ -27,7 +27,6 @@ const teamMembers: TeamMember[] = [
   },
 ];
 
-// Componente para animaciones de valores
 function ValueCardAnimated({
   title,
   description,
@@ -142,7 +141,6 @@ function StatsSection() {
 export default function About() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section - Sin animación de scroll ya que está visible */}
       <section className="relative h-96 bg-gray-900 flex items-center justify-center">
         <div className="absolute inset-0 bg-black/40"></div>
         <motion.div
@@ -158,7 +156,6 @@ export default function About() {
         </motion.div>
       </section>
 
-      {/* Our Story Section */}
       <section className="py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -193,7 +190,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Values Section */}
       <section className="bg-gray-50 py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <motion.h2
@@ -228,7 +224,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Team Section */}
       <section className="py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <motion.h2
@@ -236,7 +231,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl font-bold text-center mb-12"
+            className="text-4xl font-bold text-center mb-12 text-black"
           >
             Meet Our Team
           </motion.h2>
@@ -248,7 +243,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Stats Section */}
       <section className="bg-black text-white py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <StatsSection />

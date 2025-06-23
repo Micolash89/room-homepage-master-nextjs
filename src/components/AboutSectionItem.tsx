@@ -36,17 +36,17 @@ export default function AboutSectionItem() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="px-6 py-14 max-w-2xl"
+        className="px-6 py-14 max-w-2xl sm:py-20 sm:px-15"
       >
         <motion.h3
           variants={textVariants}
-          className="font-bold text-lg mb-4 tracking-[0.6rem] uppercase"
+          className="font-bold text-2xl mb-5 tracking-[0.5rem] uppercase "
         >
           About our furniture
         </motion.h3>
         <motion.p
           variants={textVariants}
-          className="text-balance leading-6 text-gris-primary"
+          className="text-balance leading-8 font-bold text-gris-primary text-xl "
         >
           Our multifunctional collection blends design and function to suit your
           individual taste. Make each room unique, or pick a cohesive theme that

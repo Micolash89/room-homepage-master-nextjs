@@ -1,6 +1,6 @@
 "use client";
 import { useState, useRef } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 const categoryButtonVariants = {
   hidden: {
@@ -16,40 +16,6 @@ const categoryButtonVariants = {
       ease: "easeOut" as const,
     },
   }),
-};
-
-// Variants para productos con scroll
-const productCardVariants = {
-  hidden: {
-    opacity: 0,
-    y: 30,
-    scale: 0.95,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.5,
-      ease: "easeOut" as const,
-    },
-  },
-};
-
-// Variants para la sección de newsletter
-const newsletterVariants = {
-  hidden: {
-    opacity: 0,
-    y: 50,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut" as const,
-    },
-  },
 };
 
 export default function Contact() {
@@ -71,7 +37,6 @@ export default function Contact() {
     once: true,
     amount: 0.3,
   });
-
   const touchInView = useInView(touchRef, {
     once: true,
     amount: 0.3,
@@ -115,24 +80,36 @@ export default function Contact() {
       <section className="py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div>
-              <h2 className="text-3xl font-bold mb-8 text-black">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6 }}
+            >
+              <motion.h2
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-3xl font-bold mb-8 text-black"
+              >
                 Send us a Message
-              </h2>
+              </motion.h2>
               <motion.form
-               ref={formRef}
-            initial="hidden"
-            animate={formInView ? "visible" : "hidden"}
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: {
-                  staggerChildren: 0.15,
-                },
-              },
-            }}
-              onSubmit={handleSubmit} className="space-y-6">
+                ref={formRef}
+                initial="hidden"
+                animate={formInView ? "visible" : "hidden"}
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: {
+                      staggerChildren: 0.15,
+                    },
+                  },
+                }}
+                onSubmit={handleSubmit}
+                className="space-y-6"
+              >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <motion.div
                     initial={{ opacity: 0, y: 50 }}
@@ -242,23 +219,30 @@ export default function Contact() {
                   Send Message
                 </motion.button>
               </motion.form>
-            </div>
+            </motion.div>
 
-            <motion.div   ref={touchRef}
-            initial="hidden"
-            animate={touchInView ? "visible" : "hidden"}
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: {
-                  staggerChildren: 0.15,
+            <motion.div
+              ref={touchRef}
+              initial="hidden"
+              animate={touchInView ? "visible" : "hidden"}
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: {
+                    staggerChildren: 0.15,
+                  },
                 },
-              },
-            }}>
-              <h2 className="text-3xl font-bold mb-8 text-black">
+              }}
+            >
+              <motion.h2
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-3xl font-bold mb-8 text-black"
+              >
                 Get in Touch
-              </h2>
+              </motion.h2>
               <div className="space-y-8">
                 <ContactInfo
                   icon="📍"
@@ -307,25 +291,65 @@ export default function Contact() {
 
       <section className="bg-gris-secondary py-16 px-6">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-8">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className=" text-3xl font-bold text-center mb-8"
+          >
             Find Our Showroom
-          </h2>
+          </motion.h2>
           <div className="bg-gris-primary h-96 rounded-lg flex items-center justify-center">
-            <div className="text-center text-gray-600">
+            <motion.div
+              ref={mapRef}
+              initial="hidden"
+              animate={mapInView ? "visible" : "hidden"}
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: {
+                    staggerChildren: 0.15,
+                  },
+                },
+              }}
+              className="text-center text-gray-600"
+            >
               <div className="text-4xl mb-4">🗺️</div>
               <p className="text-lg">Interactive Map</p>
               <p className="text-sm">Map integration would go here</p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       <section className="py-16 px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12 text-black">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl font-bold text-center mb-12 text-black"
+          >
             Frequently Asked Questions
-          </h2>
-          <div className="space-y-6">
+          </motion.h2>
+          <motion.div
+            ref={questionRef}
+            initial="hidden"
+            animate={questionInView ? "visible" : "hidden"}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.15,
+                },
+              },
+            }}
+            className="space-y-6"
+          >
             <FAQItem
               question="What is your return policy?"
               answer="We offer a 30-day return policy for all furniture items in original condition. Custom pieces are non-returnable unless there's a manufacturing defect."
@@ -342,7 +366,7 @@ export default function Contact() {
               question="What materials do you use?"
               answer="We use sustainably sourced hardwoods, premium fabrics, and eco-friendly finishes. All materials meet our high quality and environmental standards."
             />
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>
@@ -359,7 +383,13 @@ function ContactInfo({
   details: string[];
 }) {
   return (
-    <div className="flex items-start space-x-4">
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true, amount: 0.3 }}
+      className="flex items-start space-x-4"
+    >
       <div className="text-2xl">{icon}</div>
       <div>
         <h3 className="font-bold text-lg mb-2 text-black">{title}</h3>
@@ -369,7 +399,7 @@ function ContactInfo({
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -377,7 +407,13 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border border-gray-200 rounded-lg">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.6 }}
+      className="border border-gray-200 rounded-lg"
+    >
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full px-6 py-4 text-black text-left flex justify-between items-center hover:bg-gray-300 transition-colors duration-200 bg-grey-50 cursor-pointer"
@@ -396,6 +432,6 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
           {answer}
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }

@@ -3,7 +3,7 @@ import AboutSectionItem from "./AboutSectionItem";
 
 export default function AboutSection() {
   return (
-    <section className="flex flex-col text-black bg-white sm:flex-row">
+    <section className="flex flex-col text-black bg-white sm:flex-row sm:w-full">
       <ImageItem url="/assents/images/image-about-dark.jpg" alt="about dark" />
       <AboutSectionItem />
       <ImageItem
@@ -15,5 +15,5 @@ export default function AboutSection() {
 }
 
 export function ImageItem({ url, alt }: { url: string; alt: string }) {
-  return <Image src={url} alt={alt} width={500} height={500} />;
+  return <Image src={url} alt={alt} width={700} height={700} />;
 }

@@ -317,12 +317,12 @@ function ProductCard({ product }: { product: Product }) {
       </div>
 
       <div className="space-y-2">
-        <h3 className="font-bold text-xl text-black group-hover:text-gray-600 transition-colors duration-300">
+        <h3 className="font-bold text-2xl text-black group-hover:text-gray-600 transition-colors duration-300">
           {product.name}
         </h3>
-        <p className="text-gris-primary text-sm">{product.description}</p>
+        <p className="text-gris-primary text-lg">{product.description}</p>
         <div className="flex justify-between items-center">
-          <span className="text-2xl font-bold text-black">
+          <span className="text-3xl font-bold text-black">
             ${product.price}
           </span>
           <motion.button
