@@ -29,10 +29,5 @@ pnpm install
 # Iniciar servidor de desarrollo
 pnpm dev run
 
-```
-
-## 📁 Estructura del Proyecto
-
-```
 
 
