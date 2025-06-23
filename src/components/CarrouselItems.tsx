@@ -66,7 +66,14 @@ export default function CarrouselItems() {
       >
         {itemsArr.map((item: ItemArr, index) => (
           <div key={`${item.title}-${index}`} className="w-full flex-shrink-0">
-            <ItemSection  description={item.description} title={item.title} urlDesktop={item.urlDesktop} urlMobile={item.urlMobile} onNext={nextSlide} onPrev={prevSlide} />
+            <ItemSection
+              description={item.description}
+              title={item.title}
+              urlDesktop={item.urlDesktop}
+              urlMobile={item.urlMobile}
+              onNext={nextSlide}
+              onPrev={prevSlide}
+            />
           </div>
         ))}
       </div>

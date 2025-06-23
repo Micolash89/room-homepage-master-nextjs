@@ -1,16 +1,15 @@
-import {  ItemSectionProps } from "@/lib/definitions";
+import { ItemSectionProps } from "@/lib/definitions";
 import Image from "next/image";
 import { motion } from "framer-motion";
-
 
 const textVariants = {
   hidden: {
     opacity: 0,
-    x: 100, 
+    x: 100,
   },
   visible: {
     opacity: 1,
-    x: 0, 
+    x: 0,
     transition: {
       duration: 0.6,
       ease: "easeOut" as const,
@@ -25,7 +24,7 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2, 
+      staggerChildren: 0.2,
     },
   },
 };
@@ -51,6 +50,7 @@ export default function ItemSection({
               sizes="(max-width: 1024px) 0px, 60vw"
               priority
             />
+
             <Image
               src={urlMobile}
               className="lg:hidden object-cover"
@@ -60,6 +60,7 @@ export default function ItemSection({
               priority
             />
           </div>
+
           <div className="absolute bottom-0 right-0 -translate-x-0 -translate-y-0 flex  bg-black sm:-right-[9.75rem]">
             <ButtonItemArrow
               url="/assents/images/icon-angle-left.svg"
@@ -74,28 +75,28 @@ export default function ItemSection({
           </div>
         </div>
 
-        <motion.div 
+        <motion.div
           className="flex flex-col gap-5 sm:gap-7 items-center px-6 py-14 sm:px-14 sm:py-20 sm:w-1/2 lg:w-2/5 sm:justify-center"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          <motion.h2 
+          <motion.h2
             className="font-bold text-5xl w-full sm:max-w-lg text-balance self-start"
             variants={textVariants}
           >
             {title}
           </motion.h2>
-          
-          <motion.p 
+
+          <motion.p
             className="text-balance leading-relaxed text-sm text-gris-primary font-bold max-w-3xl "
             variants={textVariants}
           >
             {description}
           </motion.p>
-          
-          <motion.a 
-            href="#" 
+
+          <motion.a
+            href="#"
             className="flex gap-2 text-sm self-start"
             variants={textVariants}
           >
