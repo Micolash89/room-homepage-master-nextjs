@@ -24,7 +24,7 @@ export default function Header() {
         />
       )}
 
-      <header className="absolute top-0 left-0 sm:ml-6 sm:top-10 w-full sm:w-fit z-10 text-2xl">
+      <header className="absolute top-0 left-0 sm:ml-6 sm:top-10 w-full sm:w-fit z-10 text-lg">
         <nav className="flex sm:items-center px-4 py-2">
           <div
             className={`flex sm:hidden items-center justify-center mr-0 mt-12 sm:mr-8`}
@@ -134,7 +134,7 @@ export function LinkHeader({ title, url, index }: ItemHeaderProps) {
     >
       <Link
         href={url}
-        className={`lowercase font-bold py-2 px-1 block transition-all duration-300 ease-in-out hover:cursor-pointer relative group ${index == 0 ? "ml-16" : ""}`}
+        className={`lowercase font-bold py-2 px-1 block transition-all duration-300 ease-in-out hover:cursor-pointer relative group ${index == 0 ? "ml-10" : ""}`}
       >
         <motion.span
           className="text-white"

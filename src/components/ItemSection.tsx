@@ -60,7 +60,7 @@ export default function ItemSection({
               priority
             />
           </div>
-          <div className="absolute bottom-0 right-0 -translate-x-0 -translate-y-0 flex  bg-black sm:-right-[12.5rem]">
+          <div className="absolute bottom-0 right-0 -translate-x-0 -translate-y-0 flex  bg-black sm:-right-[9.75rem]">
             <ButtonItemArrow
               url="/assents/images/icon-angle-left.svg"
               name="arrow-left"
@@ -75,20 +75,20 @@ export default function ItemSection({
         </div>
 
         <motion.div 
-          className="flex flex-col gap-5 sm:gap-10 items-center px-6 py-14 sm:px-14 sm:py-20 sm:w-1/2 lg:w-2/5 sm:justify-center"
+          className="flex flex-col gap-5 sm:gap-7 items-center px-6 py-14 sm:px-14 sm:py-20 sm:w-1/2 lg:w-2/5 sm:justify-center"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
           <motion.h2 
-            className="font-bold text-6xl w-full sm:max-w-lg text-balance self-start"
+            className="font-bold text-5xl w-full sm:max-w-lg text-balance self-start"
             variants={textVariants}
           >
             {title}
           </motion.h2>
           
           <motion.p 
-            className="text-balance leading-relaxed text-gris-primary font-bold max-w-3xl "
+            className="text-balance leading-relaxed text-sm text-gris-primary font-bold max-w-3xl "
             variants={textVariants}
           >
             {description}
@@ -96,10 +96,10 @@ export default function ItemSection({
           
           <motion.a 
             href="#" 
-            className="flex gap-2 text self-start"
+            className="flex gap-2 text-sm self-start"
             variants={textVariants}
           >
-            <span className="tracking-[1rem] uppercase hover:text-gris-primary transition-colors duration-300 font-bold text-2xl">
+            <span className="tracking-[1rem] uppercase hover:text-gris-primary transition-colors duration-300 font-bold text-xl">
               Shop now
             </span>
             <Image
@@ -126,7 +126,7 @@ export function ButtonItemArrow({
 }) {
   return (
     <motion.button
-      className="p-10 hover:bg-gris-secondary cursor-pointer transition-colors duration-200"
+      className="p-8 hover:bg-gris-secondary cursor-pointer transition-colors duration-200"
       onClick={onClick}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}

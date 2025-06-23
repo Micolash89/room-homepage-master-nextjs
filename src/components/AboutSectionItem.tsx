@@ -40,13 +40,13 @@ export default function AboutSectionItem() {
       >
         <motion.h3
           variants={textVariants}
-          className="font-bold text-2xl mb-5 tracking-[0.5rem] uppercase "
+          className="font-bold text-xl mb-5 tracking-[0.3rem] uppercase "
         >
           About our furniture
         </motion.h3>
         <motion.p
           variants={textVariants}
-          className="text-balance leading-8 font-bold text-gris-primary text-xl "
+          className="leading-relaxed font-bold text-gris-primary text-sm "
         >
           Our multifunctional collection blends design and function to suit your
           individual taste. Make each room unique, or pick a cohesive theme that

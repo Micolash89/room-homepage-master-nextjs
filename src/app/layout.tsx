@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${leagueSpartan.className} ${geistSans.variable} ${geistMono.variable} antialiased text-xl`}
+        className={`${leagueSpartan.className} ${geistSans.variable} ${geistMono.variable} antialiased text-lg`}
       >
         <Header />
         {children}
