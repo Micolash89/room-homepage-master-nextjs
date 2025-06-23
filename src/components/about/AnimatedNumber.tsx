@@ -10,7 +10,6 @@ export function AnimatedNumber({ value, className }: AnimatedNumberProps) {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   useEffect(() => {
-    // Solo animar cuando el elemento esté visible
     if (!isInView) return;
 
     const start = value > 500 ? value * 0.95 : 0;
@@ -37,7 +36,7 @@ export function AnimatedNumber({ value, className }: AnimatedNumberProps) {
     return () => {
       clearInterval(timer);
     };
-  }, [value, isInView]); // Agregar isInView como dependencia
+  }, [value, isInView]);
 
   return <span ref={ref} className={className}>{displayValue}+</span>;
 }

@@ -61,7 +61,6 @@ function ValueCardAnimated({
   );
 }
 
-// Componente para animaciones de equipo
 function TeamCardAnimated({ member, index }: { member: TeamMember; index: number }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
@@ -94,7 +93,6 @@ function TeamCardAnimated({ member, index }: { member: TeamMember; index: number
   );
 }
 
-// Componente para estadísticas animadas
 function StatsSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
@@ -131,7 +129,6 @@ function StatsSection() {
           }}
           transition={{ duration: 0.5 }}
         >
-          {/* <div className="text-4xl font-bold mb-2">{stat.number}</div> */}
           <AnimatedNumber className="text-4xl font-bold mb-2" value={stat.number} />
           <div className="text-gris-primary">{stat.label}</div>
         </motion.div>

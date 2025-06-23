@@ -63,7 +63,6 @@ const products: Product[] = [
 
 const categories = ["All", "Chairs", "Tables", "Sofas", "Storage"];
 
-// Variants para botones de categoría
 const categoryButtonVariants = {
   hidden: {
     opacity: 0,
@@ -80,7 +79,6 @@ const categoryButtonVariants = {
   }),
 };
 
-// Variants para productos con scroll
 const productCardVariants = {
   hidden: {
     opacity: 0,
@@ -98,7 +96,6 @@ const productCardVariants = {
   },
 };
 
-// Variants para la sección de newsletter
 const newsletterVariants = {
   hidden: {
     opacity: 0,
@@ -231,7 +228,6 @@ export default function Shop() {
         </div>
       </section>
 
-      {/* Newsletter Section - Anima en scroll */}
       <section className="bg-gray-50 py-16 px-6">
         <motion.div 
           ref={newsletterRef}
@@ -284,7 +280,7 @@ function ProductCard({ product }: { product: Product }) {
         y: -5,
         transition: { duration: 0.2 }
       }}
-      layout // Para animaciones suaves al filtrar
+      layout 
       className="group cursor-pointer"
     >
       <div className="relative overflow-hidden rounded-lg mb-4">
